@@ -56,7 +56,7 @@ client.loop_start()  # Start the loop in a non-blocking way
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('frontend.html')
 
 @app.route('/video')
 def video():

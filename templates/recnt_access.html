@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent Access Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recent Access Data</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Name</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody class="recent-access-table"></tbody>
+    </table>
+
+    <script>
+        const recentAccessTable = document.querySelector('.recent-access-table');
+
+        // Sample recent access data
+        const recentAccessData = [
+            { timestamp: '2023-12-31 23:59:59', name: 'John Doe', image: 'path/to/image.jpg' },
+            // Add more data objects as needed
+        ];
+
+        recentAccessData.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.timestamp}</td>
+                <td>${item.name}</td>
+                <td><img src="${item.image}" alt="${item.name}"></td>
+            `;
+            recentAccessTable.appendChild(row);
+        });
+    </script>
+</body>
+</html>
