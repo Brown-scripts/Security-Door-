@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        img {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event List</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Event Type</th>
+            <th>Timestamp</th>
+            <th>Image</th>
+        </tr>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.id }}</td>
+            <td>{{ event.event_type }}</td>
+            <td>{{ event.timestamp }}</td>
+            <td>
+                {% if event.image_filename %}
+                    <img src="{{ url_for('uploaded_file', filename=event.image_filename) }}" alt="Event Image">
+                {% else %}
+                    No image available
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

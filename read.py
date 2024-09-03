@@ -52,7 +52,7 @@ client.on_connect = on_connect
 client.on_message = on_message    
 
 client.connect("mqtt.eclipseprojects.io", 1883, 60)
-client.loop_start()  # Start the loop in a non-blocking way
+client.loop_start() 
 
 @app.route('/')
 def index():
@@ -68,3 +68,4 @@ def video():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
