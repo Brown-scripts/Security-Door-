@@ -132,6 +132,16 @@ def events():
 def uploaded_file(filename):
     return send_from_directory('uploads', filename)
 
+@app.route('/grant_access', methods=['POST'])
+def grant_access():
+    client.publish("glblcd/door", "Grant Access")
+    return "Access Granted", 200
+
+@app.route('/deny_access', methods=['POST'])
+def deny_access():
+    client.publish("glblcd/door", "Deny Access")
+    return "Access Denied", 200
+
 if __name__ == '__main__':
     # Ensure the 'uploads' directory exists
     if not os.path.exists('uploads'):

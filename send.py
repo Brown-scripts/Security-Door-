@@ -11,6 +11,7 @@ def motion_function():
     message = "Motion Detected"
     print(message)
     client.publish("glblcd/videocam", message)
+    
 
 def no_motion_function():
     sleep(10)
@@ -24,6 +25,7 @@ def on_connect(client, userdata, flags, rc):
         print("Connected to broker")
         global Connected  # Use global variable
         Connected = True  # Signal connection
+        client.subscribe("glblcd/door")
 
     else:
         print("Connection failed")
