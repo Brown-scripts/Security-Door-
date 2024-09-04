@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="10">
     <title>Security Door System</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
     <header class="bg-dark text-white py-3">
@@ -26,38 +24,40 @@
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item" src="{{url_for('video')}}" allowfullscreen></iframe>
                         </div> 
-                
-                        </div>            
-                        <div class="access-controls d-flex justify-content-between">
-                            <button class="btn btn-danger" id="close-btn">Close</button>
-                            <button class="btn btn-success" id="grant-access-btn">Grant Access</button>
-                        </div>
-
+                    </div>            
+                    <div class="access-controls d-flex justify-content-between mt-3">
+                        <button class="btn btn-danger" id="deny-access-btn">Deny Access</button>
+                        <button class="btn btn-success" id="grant-access-btn">Grant Access</button>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-      
     </div>
- <div>
     
-    <button class="btn btn-primary fixed-right" id="recent-access-btn">Recent Access</button>
-</div>
+    <div>
+        <button class="btn btn-primary fixed-right" id="recent-access-btn">Recent Access</button>
+    </div>
 
-<footer class="bg-light py-5 mt-5">
+    <footer class="bg-light py-5 mt-5">
         <div class="container">
             <p class="mb-0 text-muted">&copy; 2024 Security Door System</p>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
         </div>
     </footer>
 
- 
     <script>
-        // ... (your existing JavaScript code)
+        document.getElementById('grant-access-btn').addEventListener('click', function() {
+            fetch('/grant_access', {method: 'POST'})
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('deny-access-btn').addEventListener('click', function() {
+            fetch('/deny_access', {method: 'POST'})
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        });
     </script>
 </body>
 </html>
