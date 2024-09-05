@@ -5,8 +5,8 @@ from signal import pause
 from time import sleep
 
 # Initialize LEDs
-green_led = LED(17)  # Use the correct GPIO pin number
-red_led = LED(27)    # Use the correct GPIO pin number
+green_led = LED(3)  # Use the correct GPIO pin number
+red_led = LED(2)    # Use the correct GPIO pin number
 
 pir = MotionSensor(18)
 
