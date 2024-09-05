@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security Door System</title>
+    <meta http-equiv="refresh" content="3">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="bg-dark text-white py-3 d-flex align-items-center">
@@ -36,7 +36,9 @@
     </div>
 
     <div class="recent-access-container mt-3 d-flex">
-        <button class="btn btn-primary ml-auto" id="recent-access-btn">Recent Access</button>
+        <a href="/events">
+            <button class="btn btn-primary ml-auto" id="recent-access-btn">Recent Access</button>
+        </a>
     </div>
 
     <footer class="bg-dark py-5 mt-5 text-center" style="margin-bottom: 0;">
@@ -48,22 +50,22 @@
     <script>
         // Grant Access Button
         document.getElementById('grant-access-btn').addEventListener('click', function() {
-            fetch('/grant_access', {method: 'POST'})
+            fetch('/grant_access', { method: 'POST' })
                 .then(response => response.text())
                 .then(data => {
-                    console.log(data);
-                    document.getElementById('door-state-button').style.backgroundColor = 'green';
+                    console.log(data);  // Logs the response from Flask
+                    document.getElementById('door-state-button').style.backgroundColor = 'green';  // Change door state button to green
                 })
                 .catch(error => console.error('Error:', error));
         });
 
         // Deny Access Button
         document.getElementById('deny-access-btn').addEventListener('click', function() {
-            fetch('/deny_access', {method: 'POST'})
+            fetch('/deny_access', { method: 'POST' })
                 .then(response => response.text())
                 .then(data => {
-                    console.log(data);
-                    document.getElementById('door-state-button').style.backgroundColor = 'red';
+                    console.log(data);  // Logs the response from Flask
+                    document.getElementById('door-state-button').style.backgroundColor = 'red';  // Change door state button to red
                 })
                 .catch(error => console.error('Error:', error));
         });

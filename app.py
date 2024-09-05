@@ -29,6 +29,11 @@ class Event(db.Model):
 def init_db():
     with app.app_context():
         db.create_all()
+        # Add access_decision column if not exists
+        try:
+            db.engine.execute('ALTER TABLE event ADD COLUMN access_decision VARCHAR(20)')
+        except Exception as e:
+            print(f"Column already exists or error: {e}")
 
 camera = None  # Initialize camera to None
 last_event_time = datetime.min
