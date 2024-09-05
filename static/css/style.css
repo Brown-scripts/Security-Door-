@@ -1,0 +1,63 @@
+.access-controls {
+    margin-top: 10px; /* Adjust the margin as needed */
+}
+
+.fixed-right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* styles.css */
+.Recent_Access {
+    left: 1rem; /* Adjust margin from the right edge */
+    bottom: 1rem;  /* Adjust margin from the bottom edge (optional) */
+    top:0%
+  }
+#logo {
+    width: 5rem; /* Set the desired width in pixels */
+    height: 5rem; /* Automatically adjust height to maintain aspect ratio */
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+    body {
+        background-color: #b2beb5; /* Ash color */
+    }
+.header-text {
+        display: flex;
+        justify-content: space-between;
+    }
+/* .element {
+        position: relative; /* or absolute, depending on your layout */
+        /* top: 20px; */
+        /* left: 30px; */
+    /* } */ */
+    /* header {
+        display: flex;
+        justify-content: space-between; /* This will move the elements to the ends of the header */
+        /* align-items: left; */
+    /* } */
+    
+    .container {
+        display: flex;
+        align-items: left;
+    } 
+/* .Door-State-button:hover { 
+        background-color: rgb(240, 200, 21);
+        padding: 9px 15px;
+        font-size: 12px;
+        border-radius: 50%; 
+    } */
+.door-State-button:hover {
+    background-color: rgb(68, 173, 7);
+    padding: 9px 15px;
+    font-size: 12px;
+    border-radius: 50%; /* This will make the button round */
+}

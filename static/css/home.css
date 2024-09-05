@@ -1,6 +1,4 @@
-/*=================
-Basic style
-==================*/
+
 html, body{
     position: relative;
     width: 100%;
@@ -794,3 +792,21 @@ orange circle
         opacity: 1;
     }
 }
+
+.btn { 
+  background-color: #9d9e8a;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+}
+
+.btn:active {
+    background-color: #323f33;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
