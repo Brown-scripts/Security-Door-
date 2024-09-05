@@ -4,36 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event List</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        img {
-            max-width: 200px;
-            height: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/events.css') }}">
 </head>
 <body>
     <h1>Event List</h1>
-    <table>
+    <a href="/main"><button class="button" style="vertical-align:middle"><span>Back</span></button></a>
+    <table class="table table-light table-striped" class="table table-bordered">
+    <thead class=".table-dark">
         <tr>
             <th>ID</th>
             <th>Event Type</th>
             <th>Timestamp</th>
+            <th>Access Decision</th> <!-- Added this line -->
             <th>Image</th>
         </tr>
+    </thead>
+    <tbody>
         {% for event in events %}
         <tr>
             <td>{{ event.id }}</td>
             <td>{{ event.event_type }}</td>
             <td>{{ event.timestamp }}</td>
+            <td>{{ event.access_decision }}</td> <!-- Added this line -->
             <td>
                 {% if event.image_filename %}
                     <img src="{{ url_for('uploaded_file', filename=event.image_filename) }}" alt="Event Image">
@@ -43,6 +35,7 @@
             </td>
         </tr>
         {% endfor %}
+    </tbody>
     </table>
 </body>
 </html>

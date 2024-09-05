@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="bg-dark text-white py-3">
-        <div class="container d-flex justify-content-between">
-            <h1 class="mb-0">Security Door System</h1>
-            <img src="your-logo.png" alt="Your Logo" class="logo">
+    <header class="bg-dark text-white py-3 d-flex align-items-center">
+        <div class="container d-flex align-items-center header-text">
+            <h1 class="mb-0 mr-auto">Security Door System</h1> 
+            <img src="pik.jpeg" alt="Your Logo" id="logo" class="ml-auto" style="height: 50px;">
         </div>
     </header>
 
@@ -27,35 +27,44 @@
                     </div>            
                     <div class="access-controls d-flex justify-content-between mt-3">
                         <button class="btn btn-danger" id="deny-access-btn">Deny Access</button>
+                        <button id="door-state-button" class="circular-button">Door State</button>
                         <button class="btn btn-success" id="grant-access-btn">Grant Access</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div>
-        <button class="btn btn-primary fixed-right" id="recent-access-btn">Recent Access</button>
+
+    <div class="recent-access-container mt-3 d-flex">
+        <button class="btn btn-primary ml-auto" id="recent-access-btn">Recent Access</button>
     </div>
 
-    <footer class="bg-light py-5 mt-5">
+    <footer class="bg-dark py-5 mt-5 text-center" style="margin-bottom: 0;">
         <div class="container">
             <p class="mb-0 text-muted">&copy; 2024 Security Door System</p>
         </div>
     </footer>
 
     <script>
+        // Grant Access Button
         document.getElementById('grant-access-btn').addEventListener('click', function() {
             fetch('/grant_access', {method: 'POST'})
                 .then(response => response.text())
-                .then(data => console.log(data))
+                .then(data => {
+                    console.log(data);
+                    document.getElementById('door-state-button').style.backgroundColor = 'green';
+                })
                 .catch(error => console.error('Error:', error));
         });
 
+        // Deny Access Button
         document.getElementById('deny-access-btn').addEventListener('click', function() {
             fetch('/deny_access', {method: 'POST'})
                 .then(response => response.text())
-                .then(data => console.log(data))
+                .then(data => {
+                    console.log(data);
+                    document.getElementById('door-state-button').style.backgroundColor = 'red';
+                })
                 .catch(error => console.error('Error:', error));
         });
     </script>

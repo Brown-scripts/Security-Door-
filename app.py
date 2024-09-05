@@ -20,6 +20,7 @@ class Event(db.Model):
     event_type = db.Column(db.String(50), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     image_filename = db.Column(db.String(100), nullable=True)
+    access_decision = db.Column(db.String(20), nullable=True)  # New column
 
     def __repr__(self):
         return f'<Event {self.event_type} at {self.timestamp}>'
@@ -32,7 +33,7 @@ def init_db():
 camera = None  # Initialize camera to None
 last_event_time = datetime.min
 is_motion_detected = False
-capture_interval = timedelta(seconds=10)  # Interval between captures
+capture_interval = timedelta(seconds=20)  # Interval between captures
 
 def cctv_live():
     global camera
@@ -50,7 +51,7 @@ def cctv_live():
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-def save_event(event_type, image=None):
+def save_event(event_type, image=None, access_decision=None):
     with app.app_context():
         image_filename = None
         if image is not None:
@@ -59,8 +60,8 @@ def save_event(event_type, image=None):
             image_path = os.path.join('uploads', image_filename)
             cv2.imwrite(image_path, image)
 
-        # Save the event to the database
-        event = Event(event_type=event_type, image_filename=image_filename)
+        # Save the event to the database with access decision
+        event = Event(event_type=event_type, image_filename=image_filename, access_decision=access_decision)
         db.session.add(event)
         db.session.commit()
 
@@ -104,12 +105,12 @@ client.connect("mqtt.eclipseprojects.io", 1883, 60)
 client.loop_start() 
 
 @app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/home')
 def home():
     return render_template('home.html')
+
+@app.route('/main')
+def index():
+    return render_template('index.html')
 
 @app.route('/video')
 def video():
@@ -134,11 +135,13 @@ def uploaded_file(filename):
 
 @app.route('/grant_access', methods=['POST'])
 def grant_access():
+    save_event('Grant Access', access_decision='Granted')
     client.publish("glblcd/door", "Grant Access")
     return "Access Granted", 200
 
 @app.route('/deny_access', methods=['POST'])
 def deny_access():
+    save_event('Deny Access', access_decision='Denied')
     client.publish("glblcd/door", "Deny Access")
     return "Access Denied", 200
 

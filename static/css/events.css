@@ -1,0 +1,87 @@
+table {
+    width: 60%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid;
+    border-color: antiquewhite;
+}
+
+th{
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    background-color: #0dd442;
+    color: white;
+    border: 1px solid;
+    border-color: antiquewhite;
+}
+td , tr {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border: 1px solid;
+    border-color: antiquewhite;
+}
+tr:hover {
+    background-color: rgb(203, 197, 197);
+}
+tr:nth-child(even){
+    background-color: #f2f2f2
+}
+
+img {
+    max-width: 300px;
+    height: auto;
+}
+h1 {
+    text-align: center;
+    font-style: oblique;
+    color: #385db3;
+}
+
+.button {
+    display: inline-block;
+    border-radius:6px;
+    background-color: #236d97;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    width: 80px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    position:absolute; top:0; left:0;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+body {
+    background-color: rgb(253, 254, 255);
+}

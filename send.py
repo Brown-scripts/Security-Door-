@@ -16,7 +16,7 @@ def motion_function():
     client.publish("glblcd/videocam", message)
 
 def no_motion_function():
-    sleep(10)
+    sleep(20)
     message = "Motion Stopped"
     print(message)
     client.publish("glblcd/videocam", message)
