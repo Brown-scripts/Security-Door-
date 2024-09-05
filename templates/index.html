@@ -1,14 +1,99 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Security Door System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
 </head>
 <body>
-    <h1>CCTV Live Footage</h1>
-    <div>
-        <img src="{{url_for('video')}}" width="50%"/>
+    <header class="bg-dark text-white py-3 d-flex align-items-center">
+        <div class="container d-flex align-items-center header-text">
+            <h1 class="mb-0 mr-auto">Security Door System</h1>
+            <img src="/static/logo.jpeg" alt="Your Logo" id="logo" width="100" style="border-radius: 10px;">
+        </div>
+    </header>
+    
+      
+    
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Live CCTV Feed</h3>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="/video" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="access-controls d-flex justify-content-between mt-3">
+                    <button class="btn btn-danger" id="close-btn">Deny Access</button>
+                    <button id="door-state-button" class="circular-button">Door State</button>
+                    <button class="btn btn-success" id="grant-access-btn">Grant Access</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="recent-access-container mt-3 d-flex">
+        <button class="btn btn-primary ml-auto" id="recent-access-btn" a href="event.html">Recent Access</button>
+    </div>
+
+  
+<script>
+    document.getElementById('camera-state-button').addEventListener('click', function() {
+        alert('Camera State toggled!');
+    });
+</script>
+
+    <footer class="bg-dark py-5 mt-5 text-center" style="margin-bottom: 0;">
+        <div class="container">
+            <p class="mb-0 text-muted">&copy; 2024 Security Door System</p>
+        </div>
+    </footer>
+<script>
+const doorStateButton = document.getElementById('doorStateButton');
+const grantAccessButton = document.getElementById('grantAccessButton');
+grantAccessButton.addEventListener('click', function() {
+    doorStateButton.style.backgroundColor = 'red';
+});
+</script>
+
+    <script>
+        document.getElementById('grant-access-btn').addEventListener('click', function() {
+            fetch('/grant_access', {method: 'POST'})
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('deny-access-btn').addEventListener('click', function() {
+            fetch('/deny_access', {method: 'POST'})
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        });
+      </script>
+
+<script>
+    document.getElementById('grant-access-btn').addEventListener('click', function() {
+        fetch('/grant_access', {method: 'POST'})
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    });
+
+    document.getElementById('deny-access-btn').addEventListener('click', function() {
+        fetch('/deny_access', {method: 'POST'})
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    });
+    </script>
 </body>
 </html>
