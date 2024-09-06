@@ -1,63 +1,85 @@
-.access-controls {
-    margin-top: 10px; /* Adjust the margin as needed */
+/* General Body Styling */
+body {
+    background-color: #f8f9fa; /* Lighter background color for a cleaner look */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+/* Header Styling */
+.header-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo Styling */
+#logo {
+    width: 5rem; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute;
+    right: 1rem; /* Adjusted from the right edge */
+    top: 1rem; /* Adjusted from the top edge */
+}
+
+/* Access Controls Styling */
+.access-controls {
+    margin-top: 10px; /* Adjust margin as needed */
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Fixed Position Styling */
 .fixed-right {
     position: fixed;
     bottom: 20px;
     right: 20px;
 }
+
+/* Centered Position Styling */
 .centered {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-/* styles.css */
+
+/* Recent Access Button Styling */
 .Recent_Access {
-    left: 1rem; /* Adjust margin from the right edge */
-    bottom: 1rem;  /* Adjust margin from the bottom edge (optional) */
-    top:0%
-  }
-#logo {
-    width: 5rem; /* Set the desired width in pixels */
-    height: 5rem; /* Automatically adjust height to maintain aspect ratio */
-    position: absolute;
-    right: 0;
-    top: 0
+    position: fixed;
+    left: 1rem; /* Adjust margin from the left edge */
+    bottom: 1rem; /* Adjust margin from the bottom edge */
 }
 
-    body {
-        background-color: #b2beb5; /* Ash color */
-    }
-.header-text {
-        display: flex;
-        justify-content: space-between;
-    }
-/* .element {
-        position: relative; /* or absolute, depending on your layout */
-        /* top: 20px; */
-        /* left: 30px; */
-    /* } */ */
-    /* header {
-        display: flex;
-        justify-content: space-between; /* This will move the elements to the ends of the header */
-        /* align-items: left; */
-    /* } */
-    
-    .container {
-        display: flex;
-        align-items: left;
-    } 
-/* .Door-State-button:hover { 
-        background-color: rgb(240, 200, 21);
-        padding: 9px 15px;
-        font-size: 12px;
-        border-radius: 50%; 
-    } */
+/* Door State Button Styling */
+.door-State-button {
+    background-color: #b81717; /* Initial background color */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
 .door-State-button:hover {
-    background-color: rgb(68, 173, 7);
-    padding: 9px 15px;
-    font-size: 12px;
-    border-radius: 50%; /* This will make the button round */
+    background-color: #138496; /* Darker color on hover */
+    transform: scale(1.1); /* Slightly scale up on hover for effect */
+}
+
+/* Header Background Styling */
+header {
+    background: linear-gradient(90deg, #007bff, #00bfae); /* Gradient background */
+    color: white;
+    padding: 15px;
+    border-bottom: 2px solid #dee2e6; /* Subtle bottom border */
+}
+
+/* Container Styling */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
 }
