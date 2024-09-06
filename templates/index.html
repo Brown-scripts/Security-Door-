@@ -6,6 +6,90 @@
     <meta http-equiv="refresh" content="3">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            background: linear-gradient(90deg, #007bff, #00bfae);
+        }
+
+        #logo {
+            border-radius: 50%;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            color: #343a40;
+        }
+
+        .embed-responsive-item {
+            border-radius: 10px;
+        }
+
+        .access-controls {
+            border-top: 1px solid #dee2e6;
+            padding-top: 15px;
+        }
+
+        .circular-button {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+        }
+
+        .circular-button:hover {
+            background-color: #138496;
+        }
+
+        #grant-access-btn {
+            background-color: #28a745;
+        }
+
+        #grant-access-btn:hover {
+            background-color: #218838;
+        }
+
+        #deny-access-btn {
+            background-color: #dc3545;
+        }
+
+        #deny-access-btn:hover {
+            background-color: #c82333;
+        }
+
+        .recent-access-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #recent-access-btn {
+            background-color: #007bff;
+        }
+
+        #recent-access-btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #343a40;
+        }
+
+        footer p {
+            color: #adb5bd;
+        }
+    </style>
 </head>
 <body>
     <header class="bg-dark text-white py-3 d-flex align-items-center">
@@ -35,9 +119,9 @@
         </div>
     </div>
 
-    <div class="recent-access-container mt-3 d-flex">
+    <div class="recent-access-container mt-3">
         <a href="/events">
-            <button class="btn btn-primary ml-auto" id="recent-access-btn">Recent Access</button>
+            <button class="btn btn-primary" id="recent-access-btn">Recent Access</button>
         </a>
     </div>
 
@@ -54,7 +138,7 @@
                 .then(response => response.text())
                 .then(data => {
                     console.log(data);  // Logs the response from Flask
-                    document.getElementById('door-state-button').style.backgroundColor = 'green';  // Change door state button to green
+                    document.getElementById('door-state-button').style.backgroundColor = '#28a745';  // Change door state button to green
                 })
                 .catch(error => console.error('Error:', error));
         });
@@ -65,7 +149,7 @@
                 .then(response => response.text())
                 .then(data => {
                     console.log(data);  // Logs the response from Flask
-                    document.getElementById('door-state-button').style.backgroundColor = 'red';  // Change door state button to red
+                    document.getElementById('door-state-button').style.backgroundColor = '#dc3545';  // Change door state button to red
                 })
                 .catch(error => console.error('Error:', error));
         });

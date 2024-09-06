@@ -58,17 +58,28 @@ def cctv_live():
 
 def save_event(event_type, image=None, access_decision=None):
     with app.app_context():
+        event = None
         image_filename = None
+        
         if image is not None:
             # Save the image to a file and store the filename in the database
             image_filename = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.jpg"
             image_path = os.path.join('uploads', image_filename)
             cv2.imwrite(image_path, image)
+        
+        # If access decision is being provided (after motion detection)
+        if access_decision is not None:
+            # Update the most recent "Motion Detected" event with the access decision
+            event = Event.query.filter_by(event_type="Motion Detected").order_by(Event.timestamp.desc()).first()
+            if event:
+                event.access_decision = access_decision
+                db.session.commit()
+        else:
+            # Create a new event for motion detected or other types of events
+            event = Event(event_type=event_type, image_filename=image_filename)
+            db.session.add(event)
+            db.session.commit()
 
-        # Save the event to the database with access decision
-        event = Event(event_type=event_type, image_filename=image_filename, access_decision=access_decision)
-        db.session.add(event)
-        db.session.commit()
 
 # MQTT Callbacks
 def on_connect(client, userdata, flags, rc):

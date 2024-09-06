@@ -33,8 +33,13 @@ tr:nth-child(even) {
 
 /* Image styling */
 img {
-  max-width: 300px;
-  height: auto;
+  width: 300px;  /* Set the initial width to make the images smaller */
+  height: auto; /* Maintain aspect ratio */
+  transition: transform 0.2s; /* Add smooth transition effect */
+}
+
+img:hover {
+  transform: scale(2); /* Scale the image on hover to make it pop out */
 }
 
 /* Heading styling */

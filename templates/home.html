@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCTV LIVE FOOTAGE</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <style>
+        body {
+            background-color: #e9ecef;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .animation01, .animation02 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, #0056b3, #00bfae);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #0056b3, #009d9a);
+        }
+    </style>
 </head>
 <body>
     <div class="animation01">
@@ -47,13 +76,10 @@
             <div class="double_wrapper02 orange02"><div class="double_wrapper01 orange01"></div></div>
         </div>
         <div class="name">
-            <p><a href="/main"><button class="btn"> OPEN SESAME </button></a></p>
+            <p><a href="/main"><button class="btn">OPEN SESAME</button></a></p>
             <span class="name_circle01"></span>
             <span class="name_circle02"></span>
         </div>
-           
-        </div>
     </div>
-    
 </body>
 </html>

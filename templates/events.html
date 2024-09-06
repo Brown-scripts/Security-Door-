@@ -5,37 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event List</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/events.css') }}">
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        thead {
+            background-color: #343a40;
+            color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <h1>Event List</h1>
-    <a href="/main"><button class="button" style="vertical-align:middle"><span>Back</span></button></a>
-    <table class="table table-light table-striped" class="table table-bordered">
-    <thead class=".table-dark">
-        <tr>
-            <th>ID</th>
-            <th>Event Type</th>
-            <th>Timestamp</th>
-            <th>Access Decision</th> <!-- Added this line -->
-            <th>Image</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for event in events %}
-        <tr>
-            <td>{{ event.id }}</td>
-            <td>{{ event.event_type }}</td>
-            <td>{{ event.timestamp }}</td>
-            <td>{{ event.access_decision }}</td> <!-- Added this line -->
-            <td>
-                {% if event.image_filename %}
-                    <img src="{{ url_for('uploaded_file', filename=event.image_filename) }}" alt="Event Image">
-                {% else %}
-                    No image available
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
+    <a href="/main"><button class="button">Back</button></a>
+    <table class="table table-light table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Event Type</th>
+                <th>Timestamp</th>
+                <th>Access Decision</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.id }}</td>
+                <td>{{ event.event_type }}</td>
+                <td>{{ event.timestamp }}</td>
+                <td>{{ event.access_decision }}</td>
+                <td>
+                    {% if event.image_filename %}
+                        <img src="{{ url_for('uploaded_file', filename=event.image_filename) }}" alt="Event Image">
+                    {% else %}
+                        No image available
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </body>
 </html>
